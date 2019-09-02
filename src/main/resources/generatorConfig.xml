@@ -70,7 +70,7 @@
             domainObjectName:指定了实体类的名称
         -->
         <!-- false的都是不需要生成的方法-->
-        <table tableName="xt_menu" domainObjectName="XtMenu"
+        <table tableName="t_user" domainObjectName="TUser"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
