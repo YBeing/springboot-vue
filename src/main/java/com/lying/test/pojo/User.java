@@ -1,31 +1,61 @@
 package com.lying.test.pojo;
 
 public class User {
-    private String userId;
+    private int userId;
 
     private String username;
 
     private String password;
 
-    private String phoneNum;
+    private String nickname;
 
-    public User(String userId, String username, String password, String phoneNum) {
+    private String telphone;
+
+    private String address;
+
+    public User(int userId, String username, String password, String nickname, String telphone, String address) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.phoneNum = phoneNum;
+        this.nickname = nickname;
+        this.telphone = telphone;
+        this.address = address;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public User() {
         super();
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -44,11 +74,4 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum == null ? null : phoneNum.trim();
-    }
 }
