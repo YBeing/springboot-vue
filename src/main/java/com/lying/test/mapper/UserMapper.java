@@ -5,11 +5,9 @@
  */
 package com.lying.test.mapper;
 
+import com.lying.test.pojo.TUser;
 import com.lying.test.pojo.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,5 +30,15 @@ public interface UserMapper {
             "where USER_ID = #{userId,jdbcType=INTEGER}"
     })
     void updateUserInfo(User record);
+    @Insert({
+            "insert into t_user (USER_ID, USERNAME, ",
+            "PASSWORD, NICKNAME, ",
+            "TELPHONE, ADDRESS)",
+            "values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, ",
+            "#{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, ",
+            "#{telphone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})"
+    })
+    int insert(User record);
+
 
 }

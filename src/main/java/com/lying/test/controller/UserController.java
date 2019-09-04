@@ -68,6 +68,17 @@ public class UserController {
         User user = (User)JsonUtils.jsonString2Bean(User.class, userMap, "user");
         mapper.updateUserInfo(user);
     }
+    /**
+     * 新增用户信息
+     * @param userMap
+     * @return void
+     */
+    @PostMapping("/addUser")
+    @ResponseBody
+    public void addUser(@RequestBody Map userMap) {
+        User user = (User)JsonUtils.jsonString2Bean(User.class, userMap, "user");
+        mapper.insert(user);
+    }
 
 
 }
