@@ -7,11 +7,13 @@ package com.lying.test.controller;
 
 import com.lying.test.mapper.UserMapper;
 import com.lying.test.pojo.User;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.lying.test.utils.JsonUtils;
+import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 public class UserController {
 
@@ -54,6 +56,17 @@ public class UserController {
     public void deleteUser(int userid) {
 
         mapper.deleteByid(userid);
+    }
+    /**
+     * 修改用户信息
+     * @param userMap
+     * @return void
+     */
+    @PostMapping("/updateUser")
+    @ResponseBody
+    public void updateUser(@RequestBody Map userMap) {
+        User user = (User)JsonUtils.jsonString2Bean(User.class, userMap, "user");
+        mapper.updateUserInfo(user);
     }
 
 
