@@ -61,4 +61,15 @@ public class XtUnitController {
 
         return service.updateByPrimaryKey(record);
     }
+    /**
+     *  获取单位树
+     * @param
+     * @return java.util.List<com.lying.test.pojo.XtUnit>
+     */
+    @RequestMapping("/getUnitTree")
+    @ResponseBody
+    public String getUnitTree() {
+
+        return service.getUnitTree();
+    }
 }

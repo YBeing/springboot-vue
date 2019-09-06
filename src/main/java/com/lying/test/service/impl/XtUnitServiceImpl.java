@@ -5,6 +5,7 @@
  */
 package com.lying.test.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.lying.test.mapper.XtUnitMapper;
 import com.lying.test.pojo.XtUnit;
 import com.lying.test.service.XtUnitService;
@@ -65,19 +66,26 @@ public class XtUnitServiceImpl implements XtUnitService {
      * @return java.util.List<com.lying.test.pojo.XtUnit>
      */
     @Override
-    public List<XtUnit> getUnitTree() {
+    public String getUnitTree() {
         List<XtUnit> list=mapper.getListBypid(0);
-        LinkedHashMap map=new LinkedHashMap();
         List<LinkedHashMap> mapList=new ArrayList<>();
         for (XtUnit xtUnit : list) {
             LinkedHashMap map2=new LinkedHashMap();
+            map2.put("id",xtUnit.getGuid());
             map2.put("label",xtUnit.getUnitname());
-            List<XtUnit> childrenlist=mapper.getListBypid(xtUnit.getPid());
+            List<XtUnit> childrenlist=mapper.getListBypid(xtUnit.getGuid());
+            List<LinkedHashMap> mapList2=new ArrayList<>();
+
             for (XtUnit unit : childrenlist) {
                 LinkedHashMap map1=new LinkedHashMap();
-
+                map1.put("id",unit.getGuid());
+                map1.put("label",unit.getUnitname());
+                mapList2.add(map1);
             }
+            map2.put("children",mapList2);
+            mapList.add(map2);
         }
-        return null;
+        String jsonString= JSON.toJSONString(mapList);
+        return jsonString;
     }
 }
