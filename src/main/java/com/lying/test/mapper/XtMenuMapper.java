@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 
+import java.util.List;
+
 public interface XtMenuMapper {
     @Delete({
         "delete from xt_menu",
@@ -54,4 +56,6 @@ public interface XtMenuMapper {
         "where guid = #{guid,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(XtMenu record);
+    @Select("select * from xt_menu")
+    List<XtMenu> list();
 }

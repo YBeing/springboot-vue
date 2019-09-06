@@ -1,5 +1,6 @@
 spring:
   datasource:
+# serverTimezone=UTC MySQL jdbc 6.0 版本以上必须配置此参数,时区程序不出错
     url: jdbc:mysql://localhost:3306/vue?serverTimezone=UTC
     username: root
     password: 123456
@@ -9,3 +10,7 @@ mybatis:
     map-underscore-to-camel-case: true
 server:
   port: 9080
+# 打印sql
+logging:
+  level:
+    com.lying.test.mapper: debug
