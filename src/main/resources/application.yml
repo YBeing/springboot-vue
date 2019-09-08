@@ -4,9 +4,9 @@ spring:
     url: jdbc:mysql://localhost:3306/vue?serverTimezone=UTC
     username: root
 #    家里
-#    password: root
+    password: root
 #    公司
-    password: 123456
+#    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
   configuration:

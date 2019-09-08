@@ -73,6 +73,8 @@ public class XtUnitServiceImpl implements XtUnitService {
             LinkedHashMap map2=new LinkedHashMap();
             map2.put("id",xtUnit.getGuid());
             map2.put("label",xtUnit.getUnitname());
+            map2.put("unitcode",xtUnit.getUnitcode());
+            map2.put("pid",xtUnit.getPid());
             List<XtUnit> childrenlist=mapper.getListBypid(xtUnit.getGuid());
             List<LinkedHashMap> mapList2=new ArrayList<>();
 
@@ -80,6 +82,8 @@ public class XtUnitServiceImpl implements XtUnitService {
                 LinkedHashMap map1=new LinkedHashMap();
                 map1.put("id",unit.getGuid());
                 map1.put("label",unit.getUnitname());
+                map1.put("unitcode",unit.getUnitcode());
+                map1.put("pid",unit.getPid());
                 mapList2.add(map1);
             }
             map2.put("children",mapList2);
