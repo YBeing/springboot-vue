@@ -1,15 +1,11 @@
 package com.lying.test.mapper;
 
 import com.lying.test.pojo.EBillChargeitem;
-import org.apache.ibatis.annotations.Arg;
-import org.apache.ibatis.annotations.ConstructorArgs;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 import org.apache.ibatis.type.JdbcType;
+
+import java.util.List;
 
 public interface EBillChargeitemMapper {
     @Delete({
@@ -52,4 +48,15 @@ public interface EBillChargeitemMapper {
         "where guid = #{guid,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(EBillChargeitem record);
+    @Select("select * from e_bill_chargeitem where bitycode=#{bitycode}")
+    @Results({
+            @Result(property = "chargeitem",column = "itemcode",
+                    one=@One(select="com.lying.test.mapper.XtChargeitemMapper.selectByItemcode",fetchType = FetchType.EAGER))}
+    )
+    List<EBillChargeitem> selectByBitycode(String bitycode);
+    @Delete({
+            "delete from e_bill_chargeitem",
+            "where bitycode = #{bitycode} and itemcode =#{itemcode}"
+    })
+    int deleteByBitycodeAndItemcode(@Param("bitycode") String bitycode,@Param("itemcode") String itemcode);
 }

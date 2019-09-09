@@ -6,11 +6,15 @@ public class UnitBillTb {
     private String unitcode;
 
     private String billcode;
+    private XtBilltype billtype;
 
-    public UnitBillTb(Integer guid, String unitcode, String billcode) {
+
+
+    public UnitBillTb(Integer guid, String unitcode, String billcode,XtBilltype billtype) {
         this.guid = guid;
         this.unitcode = unitcode;
         this.billcode = billcode;
+        this.billtype = billtype;
     }
 
     public UnitBillTb() {
@@ -39,5 +43,13 @@ public class UnitBillTb {
 
     public void setBillcode(String billcode) {
         this.billcode = billcode == null ? null : billcode.trim();
+    }
+
+    public XtBilltype getBilltype() {
+        return billtype;
+    }
+
+    public void setBilltype(XtBilltype billtype) {
+        this.billtype = billtype;
     }
 }

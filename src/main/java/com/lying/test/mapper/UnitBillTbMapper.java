@@ -1,15 +1,11 @@
 package com.lying.test.mapper;
 
 import com.lying.test.pojo.UnitBillTb;
-import org.apache.ibatis.annotations.Arg;
-import org.apache.ibatis.annotations.ConstructorArgs;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 import org.apache.ibatis.type.JdbcType;
+
+import java.util.List;
 
 public interface UnitBillTbMapper {
     @Delete({
@@ -52,4 +48,10 @@ public interface UnitBillTbMapper {
         "where guid = #{guid,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(UnitBillTb record);
+    @Select("select * from unit_bill_tb  where unitcode=#{unitcode} ")
+    @Results(
+            @Result(property = "billtype",column = "billcode",
+                    one=@One(select="com.lying.test.mapper.XtBilltypeMapper.selectByBillcode",fetchType = FetchType.EAGER))
+    )
+    List<UnitBillTb> getByUnitcode(String unitcode);
 }
