@@ -88,6 +88,10 @@ public class EBillChargeitemServiceImpl implements EBillChargeitemService {
                 //数据库里有该条数据,但是传来的参数里也有,证明已经存在,不需要进行操作
             }else{
                 //数据库里没有但是传来的参数里有, 数据库增加该数据
+                EBillChargeitem chargeitem=new EBillChargeitem();
+                chargeitem.setItemcode(s);
+                chargeitem.setBitycode(bitycode);
+                mapper.insert(chargeitem);
             }
         }
 
