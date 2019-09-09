@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 06/09/2019 15:15:47
+ Date: 09/09/2019 18:17:11
 */
 
 SET NAMES utf8mb4;
@@ -29,6 +29,14 @@ CREATE TABLE `xt_billtype`  (
   `startdate` datetime(0) NULL DEFAULT NULL COMMENT '票据启用日期',
   `enddate` datetime(0) NULL DEFAULT NULL COMMENT '票据种类取消日期',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of xt_billtype
+-- ----------------------------
+INSERT INTO `xt_billtype` VALUES (1, '100100', '陆军军方统一票据', '1', '2019-09-08 10:38:54', '2019-09-10 10:39:00');
+INSERT INTO `xt_billtype` VALUES (2, '100101', '陆军军方餐厅票据', '1', '2019-09-08 10:38:54', '2019-09-10 10:39:00');
+INSERT INTO `xt_billtype` VALUES (3, '100200', '海军军方统一票据', '1', '2019-09-09 10:40:20', '2019-09-11 10:40:23');
+INSERT INTO `xt_billtype` VALUES (4, '100201', '海军军方军舰票据', '1', '2019-09-09 10:40:20', '2019-09-11 10:40:23');
 
 SET FOREIGN_KEY_CHECKS = 1;
