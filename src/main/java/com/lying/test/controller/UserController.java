@@ -23,6 +23,19 @@ public class UserController {
     @Resource
     UserService service;
     /**
+     * 首页
+     * @param
+     * @param
+     * @return
+     */
+    @RequestMapping("/")
+    @ResponseBody
+    public String home(String username,String password) {
+
+          return  "欢迎来到首页！";
+
+    }
+    /**
      * 获取所有用户信息列表
      * @param
      * @return java.util.List<com.lying.test.pojo.User>
