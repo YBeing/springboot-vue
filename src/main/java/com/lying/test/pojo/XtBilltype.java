@@ -1,7 +1,5 @@
 package com.lying.test.pojo;
 
-import java.util.Date;
-
 public class XtBilltype {
     private Integer id;
 
@@ -11,11 +9,11 @@ public class XtBilltype {
 
     private String isdzpj;
 
-    private Date startdate;
+    private String startdate;
 
-    private Date enddate;
+    private String enddate;
 
-    public XtBilltype(Integer id, String billcode, String billname, String isdzpj, Date startdate, Date enddate) {
+    public XtBilltype(Integer id, String billcode, String billname, String isdzpj, String startdate, String enddate) {
         this.id = id;
         this.billcode = billcode;
         this.billname = billname;
@@ -60,19 +58,19 @@ public class XtBilltype {
         this.isdzpj = isdzpj == null ? null : isdzpj.trim();
     }
 
-    public Date getStartdate() {
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Date startdate) {
+    public void setStartdate(String startdate) {
         this.startdate = startdate;
     }
 
-    public Date getEnddate() {
+    public String getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(Date enddate) {
+    public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 }

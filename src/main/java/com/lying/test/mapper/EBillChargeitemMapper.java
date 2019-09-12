@@ -22,8 +22,7 @@ public interface EBillChargeitemMapper {
     })
     int insert(EBillChargeitem record);
 
-    @InsertProvider(type=EBillChargeitemSqlProvider.class, method="insertSelective")
-    int insertSelective(EBillChargeitem record);
+
 
     @Select({
         "select",
@@ -38,8 +37,6 @@ public interface EBillChargeitemMapper {
     })
     EBillChargeitem selectByPrimaryKey(Integer guid);
 
-    @UpdateProvider(type=EBillChargeitemSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(EBillChargeitem record);
 
     @Update({
         "update e_bill_chargeitem",

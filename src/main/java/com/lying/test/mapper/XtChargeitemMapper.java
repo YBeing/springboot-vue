@@ -21,8 +21,7 @@ public interface XtChargeitemMapper {
     })
     int insert(XtChargeitem record);
 
-    @InsertProvider(type=XtChargeitemSqlProvider.class, method="insertSelective")
-    int insertSelective(XtChargeitem record);
+
 
     @Select({
         "select",
@@ -37,8 +36,7 @@ public interface XtChargeitemMapper {
     })
     XtChargeitem selectByPrimaryKey(Integer guid);
 
-    @UpdateProvider(type=XtChargeitemSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(XtChargeitem record);
+
 
     @Update({
         "update xt_chargeitem",

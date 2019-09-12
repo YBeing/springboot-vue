@@ -4,7 +4,7 @@ import com.lying.test.pojo.XtBilltype;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
-import java.util.Date;
+import java.util.List;
 
 public interface XtBilltypeMapper {
     @Delete({
@@ -18,13 +18,12 @@ public interface XtBilltypeMapper {
         "billname, isdzpj, startdate, ",
         "enddate)",
         "values (#{id,jdbcType=INTEGER}, #{billcode,jdbcType=VARCHAR}, ",
-        "#{billname,jdbcType=VARCHAR}, #{isdzpj,jdbcType=CHAR}, #{startdate,jdbcType=TIMESTAMP}, ",
-        "#{enddate,jdbcType=TIMESTAMP})"
+        "#{billname,jdbcType=VARCHAR}, #{isdzpj,jdbcType=CHAR}, #{startdate,jdbcType=VARCHAR}, ",
+        "#{enddate,jdbcType=VARCHAR})"
     })
     int insert(XtBilltype record);
 
-    @InsertProvider(type=XtBilltypeSqlProvider.class, method="insertSelective")
-    int insertSelective(XtBilltype record);
+
 
     @Select({
         "select",
@@ -37,26 +36,27 @@ public interface XtBilltypeMapper {
         @Arg(column="billcode", javaType=String.class, jdbcType=JdbcType.VARCHAR),
         @Arg(column="billname", javaType=String.class, jdbcType=JdbcType.VARCHAR),
         @Arg(column="isdzpj", javaType=String.class, jdbcType=JdbcType.CHAR),
-        @Arg(column="startdate", javaType=Date.class, jdbcType=JdbcType.TIMESTAMP),
-        @Arg(column="enddate", javaType=Date.class, jdbcType=JdbcType.TIMESTAMP)
+        @Arg(column="startdate", javaType=String.class, jdbcType=JdbcType.VARCHAR),
+        @Arg(column="enddate", javaType=String.class, jdbcType=JdbcType.VARCHAR)
     })
     XtBilltype selectByPrimaryKey(Integer id);
 
-    @UpdateProvider(type=XtBilltypeSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(XtBilltype record);
+
 
     @Update({
         "update xt_billtype",
         "set billcode = #{billcode,jdbcType=VARCHAR},",
           "billname = #{billname,jdbcType=VARCHAR},",
           "isdzpj = #{isdzpj,jdbcType=CHAR},",
-          "startdate = #{startdate,jdbcType=TIMESTAMP},",
-          "enddate = #{enddate,jdbcType=TIMESTAMP}",
+          "startdate = #{startdate,jdbcType=VARCHAR},",
+          "enddate = #{enddate,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(XtBilltype record);
     @Select("select * from xt_billtype where billcode=#{billcode}")
     XtBilltype selectByBillcode(String billcode);
+    @Select("select * from xt_billtype")
+    List<XtBilltype> list();
 
 
 

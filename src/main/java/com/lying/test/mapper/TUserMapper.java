@@ -1,14 +1,7 @@
 package com.lying.test.mapper;
 
 import com.lying.test.pojo.TUser;
-import org.apache.ibatis.annotations.Arg;
-import org.apache.ibatis.annotations.ConstructorArgs;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
 public interface TUserMapper {
@@ -28,8 +21,7 @@ public interface TUserMapper {
     })
     int insert(TUser record);
 
-    @InsertProvider(type=TUserSqlProvider.class, method="insertSelective")
-    int insertSelective(TUser record);
+
 
     @Select({
         "select",
@@ -47,8 +39,7 @@ public interface TUserMapper {
     })
     TUser selectByPrimaryKey(Integer userId);
 
-    @UpdateProvider(type=TUserSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(TUser record);
+
 
     @Update({
         "update t_user",

@@ -22,8 +22,7 @@ public interface UnitBillTbMapper {
     })
     int insert(UnitBillTb record);
 
-    @InsertProvider(type=UnitBillTbSqlProvider.class, method="insertSelective")
-    int insertSelective(UnitBillTb record);
+
 
     @Select({
         "select",
@@ -38,8 +37,7 @@ public interface UnitBillTbMapper {
     })
     UnitBillTb selectByPrimaryKey(Integer guid);
 
-    @UpdateProvider(type=UnitBillTbSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(UnitBillTb record);
+
 
     @Update({
         "update unit_bill_tb",
