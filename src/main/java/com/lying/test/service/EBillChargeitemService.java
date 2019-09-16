@@ -10,4 +10,5 @@ public interface EBillChargeitemService {
     String getAllItem();
     void  updateEbillChargeitem(String bitycode,String array[]);
 
+
 }
