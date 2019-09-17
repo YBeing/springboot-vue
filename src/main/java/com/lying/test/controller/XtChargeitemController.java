@@ -7,10 +7,15 @@ package com.lying.test.controller;
 
 import com.lying.test.pojo.XtChargeitem;
 import com.lying.test.service.XtChargeitemService;
+import com.lying.test.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/xtchargeitem")
@@ -20,23 +25,24 @@ public class XtChargeitemController {
     private XtChargeitemService service;
     /**
      * 新增执收项目
-     * @param chargeitem
+     * @param record
      * @return void
      */
     @RequestMapping("/insertXtChargeitem")
     @ResponseBody
-    public void insertXtChargeitem(XtChargeitem chargeitem) {
-
+    public void insertXtChargeitem(@RequestBody Map record) {
+        XtChargeitem chargeitem = (XtChargeitem) JsonUtils.jsonString2Bean(XtChargeitem.class, record, "record");
         service.insertXtChargeitem(chargeitem);
     }
     /**
      * 修改执收项目信息
-     * @param chargeitem
+     * @param record
      * @return void
      */
     @RequestMapping("/updateSingleXtChargeitem")
     @ResponseBody
-    public void updateSingleXtChargeitem(XtChargeitem chargeitem) {
+    public void updateSingleXtChargeitem(@RequestBody Map record) {
+        XtChargeitem chargeitem = (XtChargeitem) JsonUtils.jsonString2Bean(XtChargeitem.class, record, "record");
         service.updateSingleXtChargeitem(chargeitem);
     }
     /**
@@ -56,8 +62,8 @@ public class XtChargeitemController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public void list() {
-        service.list();
+    public List<XtChargeitem> list() {
+        return service.list();
     }
     
 }

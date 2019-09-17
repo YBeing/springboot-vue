@@ -11,6 +11,7 @@ import com.lying.test.service.XtChargeitemService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class XtChargeitemServiceImpl implements XtChargeitemService {
@@ -50,7 +51,7 @@ public class XtChargeitemServiceImpl implements XtChargeitemService {
      * @return void
      */
     @Override
-    public void list() {
-        mapper.list();
+    public List<XtChargeitem> list() {
+        return  mapper.list();
     }
 }
