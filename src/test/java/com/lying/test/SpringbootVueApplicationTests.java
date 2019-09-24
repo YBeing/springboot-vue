@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -16,13 +17,16 @@ public class SpringbootVueApplicationTests {
     UserMapper mapper;
     @Autowired
     XtUnitService service;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
     @Test
     public void contextLoads() {
         /*List<User> list = mapper.findByUsername("admin");
         String s = JSON.toJSONString(list);
-        System.out.println(s);*/
+        System.out.println(s);
         String unitTree = service.getUnitTree();
-        System.out.println(unitTree);
+        System.out.println(unitTree);*/
+        stringRedisTemplate.opsForValue().set("aaa","111");
 
 
     }

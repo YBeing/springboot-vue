@@ -1,18 +1,40 @@
 spring:
+#  配置mysql数据库
   datasource:
 # serverTimezone=UTC MySQL jdbc 6.0 版本以上必须配置此参数,时区程序不出错
     url: jdbc:mysql://localhost:3306/vue?serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+#配置Redis
+  redis:
+    host: 127.0.0.1
+    ## Redis服务器连接端口
+    port: 6379
+    ## 连接超时时间（毫秒）
+    timeout: 3
+    ## Redis服务器连接密码（默认为空）
+    password: 123456
+
+    jedis:
+      pool:
+        ## 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 3
+        ## 连接池中的最大空闲连接
+        max-idle: 8
+        ## 连接池中的最大连接数
+        max-active: 8
+
+#配置mybatis驼峰自动映射,不需要配置映射文件
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+#配置端口和访问路径
 server:
   port: 9080
   servlet:
     context-path: /springboot-vue
-# 打印sql
+# 控制台打印sql语句
 logging:
   level:
     com.lying.test.mapper: debug
