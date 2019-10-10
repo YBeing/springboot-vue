@@ -11,6 +11,7 @@ import com.lying.test.service.EBillStockService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class EBillStockServiceImpl implements EBillStockService {
@@ -64,13 +65,21 @@ public class EBillStockServiceImpl implements EBillStockService {
     public  void  deletestock (String  regicode,String  unitcode,String bitycode){
         mapper.deleteStock(regicode, unitcode, bitycode);
     }
+    /**
+     * 查询所有库存记录
+     * @param
+     * @return java.util.List<com.lying.test.pojo.EBillStock>
+     */
+    public List<EBillStock> list() {
 
-    public static void main(String[] args) {
-        int a=1;
-        String tmp=a+"";
-        for (int i = tmp.length(); i <10 ; i++) {
-            tmp="0"+tmp;
-        }
-        System.out.println(tmp);
+        return mapper.list();
     }
+    public List<EBillStock> queryBycondition(String  regicode,String  unitcode,String bitycode){
+        /*if (StringUtils.isemty(regicode)){
+
+        }*/
+        return null;
+    }
+
+
 }

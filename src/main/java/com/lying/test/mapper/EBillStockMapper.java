@@ -4,6 +4,8 @@ import com.lying.test.pojo.EBillStock;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
+import java.util.List;
+
 public interface EBillStockMapper {
     @Delete({
         "delete from e_bill_stock",
@@ -62,4 +64,7 @@ public interface EBillStockMapper {
     @Update({"update  e_bill_stock set startno= (startno+1),sheets=(sheets-1) where regicode=#{regicode}",
             " and unitcode=#{unitcode} and bitycode =#{bitycode}"})
     void deleteStock(@Param("regicode") String regicode,@Param("unitcode") String unitcode,@Param("bitycode") String bitycode);
+    @Select({"select * from  e_bill_stock"})
+    List<EBillStock> list();
+
 }
