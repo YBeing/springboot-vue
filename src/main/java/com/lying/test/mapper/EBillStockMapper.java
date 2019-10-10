@@ -53,4 +53,13 @@ public interface EBillStockMapper {
         "where id = #{id,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(EBillStock record);
+    @Select({"select * from e_bill_stock where regicode=#{regicode}",
+            " and unitcode=#{unitcode} and bitycode =#{bitycode}"})
+    EBillStock getBityTypeStock(@Param("regicode") String regicode,@Param("unitcode") String unitcode,@Param("bitycode") String bitycode);
+    @Update({"update  e_bill_stock set endno=  #{endno},sheets=#{sheets} where regicode=#{regicode}",
+            " and unitcode=#{unitcode} and bitycode =#{bitycode}" })
+    void updatebillstock (@Param("endno") String endno,@Param("regicode") String regicode,@Param("unitcode") String unitcode,@Param("bitycode") String bitycode,@Param("sheets") Long sheets);
+    @Update({"update  e_bill_stock set startno= (startno+1),sheets=(sheets-1) where regicode=#{regicode}",
+            " and unitcode=#{unitcode} and bitycode =#{bitycode}"})
+    void deleteStock(@Param("regicode") String regicode,@Param("unitcode") String unitcode,@Param("bitycode") String bitycode);
 }
