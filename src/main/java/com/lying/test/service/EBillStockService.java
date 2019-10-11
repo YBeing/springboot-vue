@@ -13,5 +13,7 @@ public interface EBillStockService {
     public void addStock (String  regicode,String  unitcode,String bitycode,Integer count);
     public  void  deletestock (String  regicode,String  unitcode,String bitycode);
     List<EBillStock> list();
+    List<EBillStock> selectByConditions(String regicode,  String unitcode,  String bitycode);
+
 
 }

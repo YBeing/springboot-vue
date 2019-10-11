@@ -44,5 +44,15 @@ public class EBillStockController {
         List<EBillStock> list = service.list();
         return  list;
     }
+    @RequestMapping("/selectByConditions")
+    public List<EBillStock> selectByConditions(@RequestBody String reqStr){
+        Map parse = (Map) JSON.parse(reqStr);
+        Map parse2=(Map) JSON.parse((String) parse.get("record"));
+        String regicode = (String) parse2.get("regicode");
+        String unitcode = (String) parse2.get("unitcode");
+        String bitycode = (String) parse2.get("bitycode");
+        return service.selectByConditions(regicode,unitcode,bitycode);
+    }
+
 
 }

@@ -70,7 +70,7 @@
             domainObjectName:指定了实体类的名称
         -->
         <!-- false的都是不需要生成的方法-->
-        <table tableName="e_bill_chargeitem" domainObjectName="EBillChargeitem"
+        <table tableName="e_bill_stock" domainObjectName="EBillStock"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

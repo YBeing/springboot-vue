@@ -66,5 +66,7 @@ public interface EBillStockMapper {
     void deleteStock(@Param("regicode") String regicode,@Param("unitcode") String unitcode,@Param("bitycode") String bitycode);
     @Select({"select * from  e_bill_stock"})
     List<EBillStock> list();
+    @SelectProvider( type=EBillStockSqlProvider.class, method="selectByConditions")
+    List<EBillStock> selectByConditions(@Param("regicode") String regicode,@Param("unitcode") String unitcode,@Param("bitycode") String bitycode);
 
 }

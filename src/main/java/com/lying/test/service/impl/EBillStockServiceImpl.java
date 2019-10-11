@@ -74,11 +74,17 @@ public class EBillStockServiceImpl implements EBillStockService {
 
         return mapper.list();
     }
-    public List<EBillStock> queryBycondition(String  regicode,String  unitcode,String bitycode){
-        /*if (StringUtils.isemty(regicode)){
+    /**
+     * 根据条件查询库存记录
+     * @param regicode
+     * @param unitcode
+     * @param bitycode
+     * @return java.util.List<com.lying.test.pojo.EBillStock>
+     */
+    public List<EBillStock> selectByConditions(String  regicode,String  unitcode,String bitycode){
 
-        }*/
-        return null;
+        return   mapper.selectByConditions(regicode,unitcode,bitycode);
+
     }
 
 
