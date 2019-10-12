@@ -72,4 +72,15 @@ public class XtUnitController {
 
         return service.getUnitTree();
     }
+    /**
+     * 获取所有单位的下拉框
+     * @param
+     * @return java.lang.String
+     */
+    @RequestMapping("/getAllUnit")
+    public String getAllUnit() {
+
+        return service.getAllUnit();
+    }
+
 }

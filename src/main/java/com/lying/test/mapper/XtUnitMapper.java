@@ -47,4 +47,6 @@ public interface XtUnitMapper {
     int updateByPrimaryKey(XtUnit record);
     @Select("select * from xt_unit where pid=#{pid}")
     List<XtUnit> getListBypid(int pid);
+    @Select("select * from xt_unit ")
+    List<XtUnit> getAllUnit();
 }

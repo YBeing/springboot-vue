@@ -65,5 +65,15 @@ public class XtChargeitemController {
     public List<XtChargeitem> list() {
         return service.list();
     }
+    /**
+     * 查询所有执收项目信息的下拉框
+     * @param
+     * @return void
+     */
+    @RequestMapping("/getAllChargeitemSelectBox")
+    @ResponseBody
+    public  String getAllChargeitemSelectBox(){
+        return service.getAllChargeitemSelectBox();
+    }
     
 }

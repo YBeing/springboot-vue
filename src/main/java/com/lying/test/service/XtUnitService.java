@@ -13,5 +13,7 @@ public interface XtUnitService {
     XtUnit selectByPrimaryKey(Integer guid);
     int updateByPrimaryKey(XtUnit record);
     String getUnitTree();
+    String getAllUnit();
+
 
 }

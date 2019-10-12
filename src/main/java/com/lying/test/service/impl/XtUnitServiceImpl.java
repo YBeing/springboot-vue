@@ -92,4 +92,24 @@ public class XtUnitServiceImpl implements XtUnitService {
         String jsonString= JSON.toJSONString(mapList);
         return jsonString;
     }
+
+    /**
+     * 获取单位下拉框
+     * @param
+     * @return java.lang.String
+     */
+    public String getAllUnit() {
+
+        List<XtUnit> list=mapper.getAllUnit();
+        List<LinkedHashMap> mapList=new ArrayList<>();
+        for (XtUnit xtUnit : list) {
+            LinkedHashMap map2=new LinkedHashMap();
+            map2.put("value",xtUnit.getUnitcode());
+            map2.put("label",xtUnit.getUnitname());
+            mapList.add(map2);
+        }
+        String jsonString= JSON.toJSONString(mapList);
+        return jsonString;
+    }
+
 }

@@ -14,4 +14,5 @@ public interface XtChargeitemService {
     void  updateSingleXtChargeitem(XtChargeitem chargeitem);
     void  deleteSingleXtChargeitem(Integer id);
     List<XtChargeitem> list();
+    String getAllChargeitemSelectBox();
 }
