@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisOperaUtils {
     @Autowired
     protected RedisTemplate redisTemplate;
-    @Autowired
+    @Resource
     private JedisPool jedisPool;
     /**
      * 写入redis缓存（不设置expire存活时间）,Value 为List类型
