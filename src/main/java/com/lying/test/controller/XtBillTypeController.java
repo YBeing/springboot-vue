@@ -59,5 +59,10 @@ public class XtBillTypeController {
     public List<XtBilltype> list() {
         return service.list();
     }
+    @RequestMapping("/getSelectBox")
+    @ResponseBody
+    public String getSelectBox(){
+        return service.getSelectBox();
+    }
     
 }

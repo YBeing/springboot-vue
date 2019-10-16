@@ -16,6 +16,7 @@ public interface XtBillTypeService {
     XtBilltype selectByBillcode(String billcode);
     int deleteByPrimaryKey(Integer id);
     List<XtBilltype> list();
+    String getSelectBox();
 
 
 }

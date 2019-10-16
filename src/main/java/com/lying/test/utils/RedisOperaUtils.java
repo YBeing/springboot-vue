@@ -80,6 +80,8 @@ public class RedisOperaUtils {
     public List ReadMapWithExpire(final String key,long start,long end){
         Jedis jedis=jedisPool.getResource();
         List lrange = jedis.lrange(key, start, end);
+        //用完连接需要关闭否则会报连接用尽的错误（Timeout waiting for idle object）
+        jedis.close();
         return lrange;
     }
     /**

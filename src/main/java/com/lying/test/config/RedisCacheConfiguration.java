@@ -34,6 +34,7 @@ public class RedisCacheConfiguration extends CachingConfigurerSupport {
 
     @Value("${spring.redis.password}")
     private String password;
+    //注入JedisPool
     @Bean
     public JedisPool redisPoolFactory() {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
@@ -42,7 +43,7 @@ public class RedisCacheConfiguration extends CachingConfigurerSupport {
         JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
         return jedisPool;
     }
-
+    //替换redis默认的序列化方式
     @Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
