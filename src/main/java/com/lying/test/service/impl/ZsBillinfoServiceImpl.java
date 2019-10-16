@@ -5,30 +5,27 @@
  */
 package com.lying.test.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.lying.test.mapper.ZsBillinfoMapper;
 import com.lying.test.pojo.ZsBillinfo;
+import com.lying.test.pojo.ZsBillinfoDetail;
 import com.lying.test.service.ZsBillinfoService;
+import com.lying.test.utils.RedisOperaUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Service
 public class ZsBillinfoServiceImpl implements ZsBillinfoService {
     @Resource
     private ZsBillinfoMapper mapper;
     @Autowired
-    protected StringRedisTemplate stringRedisTemplate;
-    protected RedisTemplate redisTemplate;
-
-    @Override
-    public int insert(ZsBillinfo record) {
-        ValueOperations operations=redisTemplate.opsForValue();
-        ListOperations opsForList=redisTemplate.opsForList();
-//        opsForList.set(a);
-      return   mapper.insert(record);
+    private RedisOperaUtils operaUtils;
+    public int insert(ZsBillinfo record, ZsBillinfoDetail record2) {
+        Map map = (Map)JSONObject.toJSON(record2);
+        operaUtils.setMapWithoutExpire(record.getBillno(),map);
+        return   mapper.insert(record);
     }
 }
