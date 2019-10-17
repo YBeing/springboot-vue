@@ -7,7 +7,7 @@ package com.lying.test.utils;
 
 public class StringUtils {
     public static boolean isemty(String str){
-        if (!str.equals("")&& str!=null){
+        if (str!=null && !"".equals(str) ){
             return true;
         }
         return false;

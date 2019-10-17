@@ -26,9 +26,9 @@ public class ZsBillinfoController {
     @RequestMapping("/makebill")
     public void makebill(@RequestBody Map record) {
         ZsBillinfo zs=new ZsBillinfo();
-        if(record.get("idcard")!=null){
-           String idcard=(String) record.get("idcard");
-           zs.setIdcard(idcard);
+        if(record.get("billcode")!=null){
+           String billcode=(String) record.get("billcode");
+           zs.setBilltypeno(billcode);
         }
         if(record.get("payer")!=null){
            String payer=(String) record.get("payer");
@@ -77,7 +77,6 @@ public class ZsBillinfoController {
             if (pricevalue!=null && !pricevalue.equals("")){
                 BigDecimal price=new BigDecimal(pricevalue);
                 billinfoDetail.setPrice(price);
-
             }
             billinfoDetail.setUnitcode(untivalue);
             billinfoDetails.add(billinfoDetail);
