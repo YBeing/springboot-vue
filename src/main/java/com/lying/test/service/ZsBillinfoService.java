@@ -8,7 +8,9 @@ package com.lying.test.service;
 import com.lying.test.pojo.ZsBillinfo;
 import com.lying.test.pojo.ZsBillinfoDetail;
 
+import java.util.List;
+
 public interface ZsBillinfoService {
-    int insert(ZsBillinfo record, ZsBillinfoDetail record2);
+    void insert(ZsBillinfo record, List<ZsBillinfoDetail> record2);
 
 }

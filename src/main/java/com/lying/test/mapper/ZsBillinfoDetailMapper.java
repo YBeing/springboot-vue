@@ -13,7 +13,7 @@ public interface ZsBillinfoDetailMapper {
     })
     int deleteByPrimaryKey(Integer guid);
 
-    @Insert({
+    @Insert( {
         "insert into zs_billinfodetail (guid, p_billid, ",
         "itemcode, unitcode, ",
         "count, price, money)",

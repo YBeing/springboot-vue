@@ -29,6 +29,8 @@ public interface ZsBillinfoMapper {
         "#{payerkind,jdbcType=VARCHAR}, #{totalmoney,jdbcType=VARCHAR}, ",
         "#{remark,jdbcType=VARCHAR})"
     })
+    @Options(useGeneratedKeys = true,  keyProperty = "billid",keyColumn = "billid")
+
     int insert(ZsBillinfo record);
 
 
