@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * 提供者
+ * 生产者
  * <p>Title: HelloRabbitProvider</p>
  * <p>Description: </p>
  *
