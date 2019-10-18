@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,14 @@ public class ZsBillinfoController {
     @RequestMapping("/makebill")
     public void makebill(@RequestBody Map record) {
         ZsBillinfo zs=new ZsBillinfo();
+        if(record.get("unitcode")!=null){
+           String unitcode=(String) record.get("unitcode");
+           zs.setUnitcode(unitcode);
+        }
+        if(record.get("checker")!=null){
+           String checker=(String) record.get("checker");
+           zs.setMakeplayer(checker);
+        }
         if(record.get("billcode")!=null){
            String billcode=(String) record.get("billcode");
            zs.setBilltypeno(billcode);
@@ -54,7 +63,7 @@ public class ZsBillinfoController {
            String remark=(String) record.get("remark");
            zs.setRemark(remark);
         }
-
+        zs.setMakedate(new Date());
         List<ZsBillinfoDetail> billinfoDetails=new ArrayList<>();
         String mapStr = JSONObject.toJSONString(record);
         for (int i = 1; i <6 ; i++) {

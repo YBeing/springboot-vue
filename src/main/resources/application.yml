@@ -25,6 +25,12 @@ spring:
         max-idle: 50
         ## 连接池中的最大连接数
         max-active: 300
+  #配置rabbitmq
+  rabbitmq:
+    host: 192.168.198.131
+    port: 5672
+    username: guest
+    password: guest
 
 #配置mybatis驼峰自动映射,不需要配置映射文件
 mybatis:

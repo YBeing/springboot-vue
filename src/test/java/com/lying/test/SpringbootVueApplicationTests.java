@@ -1,6 +1,7 @@
 package com.lying.test;
 
 import com.lying.test.mapper.UserMapper;
+import com.lying.test.rabbitMq.HelloRabbitProvider;
 import com.lying.test.service.XtUnitService;
 import com.lying.test.utils.RedisOperaUtils;
 import org.junit.Test;
@@ -25,19 +26,13 @@ public class SpringbootVueApplicationTests {
     RedisTemplate redisTemplate;
     @Autowired
     private RedisOperaUtils redisOperaUtils;
+    @Autowired
+    private HelloRabbitProvider helloRabbitProvider;
     @Test
-    public void contextLoads() {
-        /*List<User> list = mapper.findByUsername("admin");
-        String s = JSON.toJSONString(list);
-        System.out.println(s);
-        String unitTree = service.getUnitTree();
-        System.out.println(unitTree);*/
-
-//        Jedis jedis = jedisPool.getResource();
-        stringRedisTemplate.opsForValue().set("aaa","111");
-//        Object bitycodeList = redisOperaUtils.ReadMapWithExpire("bitycodeList");
-        System.out.println(1);
-
+    public void testSend() {
+        for (int i = 0; i < 10; i++) {
+            helloRabbitProvider.send();
+        }
 
     }
 
