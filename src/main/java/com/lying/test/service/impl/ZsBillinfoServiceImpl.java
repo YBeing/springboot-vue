@@ -49,6 +49,7 @@ public class ZsBillinfoServiceImpl implements ZsBillinfoService {
             if (billinfoDetail.getItemcode()!=null ||!billinfoDetail.getItemcode().equals("")){
                 billinfoDetail.setpBillid(zs.getBillid());
                 billinfoDetailMapper.insert(billinfoDetail);
+                System.out.println(1);
             }
 
 
