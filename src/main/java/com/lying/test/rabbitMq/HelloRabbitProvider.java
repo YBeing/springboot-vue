@@ -16,8 +16,8 @@ import java.util.Date;
  * <p>Title: HelloRabbitProvider</p>
  * <p>Description: </p>
  *
- * @author Lusifer
- * @version 1.0.0
+ * @author Lyibing
+ * @version 1.0.
  * @date 2018/5/1 22:39
  */
 @Component
