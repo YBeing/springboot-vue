@@ -4,7 +4,7 @@ spring:
 # serverTimezone=UTC MySQL jdbc 6.0 版本以上必须配置此参数,时区程序不出错
     url: jdbc:mysql://192.168.198.131:3306/vue?serverTimezone=UTC
     username: root
-    password: root
+    password: Lyb19961016!
     driver-class-name: com.mysql.cj.jdbc.Driver
 #配置Redis
   redis:

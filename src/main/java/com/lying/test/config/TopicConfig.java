@@ -14,33 +14,25 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class TopicConfig {
-    @Bean
-    public Queue coreQueue() {
-        return new Queue("api.core");
-    }
 
     @Bean
-    public Queue paymentQueue() {
-        return new Queue("api.payment");
+    public Queue makeBillQueue() {
+        return new Queue("bill.makeBill");
     }
-
+    /*交换机——TopicExchange*/
+    /*只有通过通配符要求的才能进入消费者,被消费者接收到*/
     @Bean
-    public TopicExchange coreExchange() {
+    public TopicExchange billExchange() {
         return new TopicExchange("coreExchange");
     }
-
+    /*把bill.makeBill的消息队列绑定在交换机上*/
     @Bean
-    public TopicExchange paymentExchange() {
-        return new TopicExchange("paymentExchange");
+    public Binding bindingCoreExchange(Queue makeBillQueue, TopicExchange billExchange) {
+        //routingKey 是*,只能匹配多一层路径 # 可以匹配多层路径
+        return BindingBuilder.bind(makeBillQueue).to(billExchange).with("bill.makeBill.*");
     }
 
-    @Bean
-    public Binding bindingCoreExchange(Queue coreQueue, TopicExchange coreExchange) {
-        return BindingBuilder.bind(coreQueue).to(coreExchange).with("api.core.*");
-    }
 
-    @Bean
-    public Binding bindingPaymentExchange(Queue paymentQueue, TopicExchange paymentExchange) {
-        return BindingBuilder.bind(paymentQueue).to(paymentExchange).with("api.payment.#");
-    }
+
+
 }

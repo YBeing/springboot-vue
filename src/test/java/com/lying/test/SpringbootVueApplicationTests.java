@@ -1,7 +1,7 @@
 package com.lying.test;
 
 import com.lying.test.mapper.UserMapper;
-import com.lying.test.rabbitMq.HelloRabbitProvider;
+import com.lying.test.rabbitMq.MqProvider;
 import com.lying.test.service.XtUnitService;
 import com.lying.test.utils.RedisOperaUtils;
 import org.junit.Test;
@@ -27,12 +27,10 @@ public class SpringbootVueApplicationTests {
     @Autowired
     private RedisOperaUtils redisOperaUtils;
     @Autowired
-    private HelloRabbitProvider helloRabbitProvider;
+    private MqProvider mqProvider;
     @Test
     public void testSend() {
-        for (int i = 0; i < 10; i++) {
-            helloRabbitProvider.send();
-        }
+        mqProvider.makeBill("coreExchange","bill.makeBill.aa","能成功吗?");
 
     }
 
